@@ -23,4 +23,4 @@ Installing this package requires WP-CLI v1.1.0 or greater. Update to the latest 
 
 Once you've done so, you can install this package with:
 
-    wp package install git@bitbucket.org:effectdigital/effectdigital-gdpr-sanitize.git
+    wp package install git@github.com:sameffectdigital/gdpr-sanitize.git
