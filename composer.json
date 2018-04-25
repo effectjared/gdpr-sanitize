@@ -1,5 +1,5 @@
 {
-    "name": "effectdigital-gdpr-sanitise",
+    "name": "effectdigital/gdpr-sanitise",
     "description": "",
     "type": "wp-cli-package",
     "license": "MIT",
