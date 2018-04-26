@@ -37,7 +37,8 @@ class GdprSanitize {
             $this->delete();
         } else {
             $mainSite = get_current_blog_id();
-            $sites = get_sites(['number' => -1]);
+            $sites = get_sites(['number' => 9999999]);
+
             foreach ($sites as $site) {
                 WP_CLI::warning( 'Starting deletion for site ' . $site->domain );
 
