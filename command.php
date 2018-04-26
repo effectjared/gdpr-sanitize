@@ -80,15 +80,16 @@ class GdprSanitize {
     function deleteUsers()
     {
 
-        $exemptRoles = apply_filters('gdpr_sanitize_exempt_user_roles', ['administrator']);
-        $adminUsers = get_users(['role__in' => $exemptRoles]);
+        $adminUsers = get_users(['role__in' => ['administrator']]);
 
         if (count($adminUsers) === 0) {
             WP_CLI::error('Can\'t proceed there are no admin users to re-assign content to' );
             return;
         }
 
-        $users = get_users(['role__not_in' => ['administrator']]);
+        $exemptRoles = apply_filters('gdpr_sanitize_exempt_user_roles', ['administrator']);
+
+        $users = get_users(['role__not_in' => $exemptRoles]);
         if (count($users) === 0) {
             WP_CLI::success( 'All non-admin users already deleted' );
             return;
