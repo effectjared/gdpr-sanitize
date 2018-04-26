@@ -159,12 +159,18 @@ class GdprSanitize {
             return;
         }
 
+        if (!class_exists('GFAPI')) {
+            WP_CLI::warning( 'Gravity Forms GFAPI class does not exist' );
+
+            return;
+        }
+
         $forms = array_merge( \GFAPI::get_forms(false, true),  \GFAPI::get_forms());
 
         WP_CLI::log(sprintf('%d forms to delete entries from', count($forms)));
 
         foreach ( $forms as $form ) {
-            GFFormsModel::delete_leads_by_form( $form['id'] );
+            \GFFormsModel::delete_leads_by_form( $form['id'] );
         }
 
         WP_CLI::success(sprintf('Deleted All Gravity Forms Entries'));
