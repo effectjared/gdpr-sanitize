@@ -80,7 +80,8 @@ class GdprSanitize {
     function deleteUsers()
     {
 
-        $adminUsers = get_users(['role__in' => ['administrator']]);
+        $exemptRoles = apply_filters('gdpr_sanitize_exempt_user_roles', ['administrator']);
+        $adminUsers = get_users(['role__in' => $exemptRoles]);
 
         if (count($adminUsers) === 0) {
             WP_CLI::error('Can\'t proceed there are no admin users to re-assign content to' );
